@@ -7,8 +7,7 @@
 import requests
 import json
 
-'''username = input('Введите логин пользователя GitHub: ')
-#username = 'podoynitsyn-va'
+username = input('Введите логин пользователя GitHub: ')
 link = f'https://api.github.com/users/{username}/repos'
 
 request = requests.get(link)
@@ -23,7 +22,6 @@ if request.ok:
         print(repos.get('name'))
 else:
     print('Неверно введён логин пользователя GitHub!')
-    '''
 
 
 #2. Изучить список открытых API. Найти среди них любое, требующее авторизацию (любого типа).
