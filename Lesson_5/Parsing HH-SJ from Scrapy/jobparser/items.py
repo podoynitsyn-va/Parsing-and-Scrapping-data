@@ -15,7 +15,4 @@ class JobparserItem(scrapy.Item):
     vacancy_link = scrapy.Field()
     vacancy_text = scrapy.Field()
     salary = scrapy.Field()
-    # salary_from = scrapy.Field()
-    # salary_to = scrapy.Field()
-    # currency = scrapy.Field()
     pass

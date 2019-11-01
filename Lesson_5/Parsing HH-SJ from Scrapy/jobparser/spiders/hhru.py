@@ -7,7 +7,6 @@ from jobparser.items import JobparserItem
 class HhruSpider(scrapy.Spider):
     name = 'hhru'
     allowed_domains = ['hh.ru']
-    #start_urls = ['https://hh.ru/search/vacancy?text=Python&area=113&st=searchVacancy']
     start_urls = ['https://khabarovsk.hh.ru/search/vacancy?clusters=true&enable_snippets=true&text=Python&showClusters=true']
 
     def parse(self, response: HtmlResponse):
@@ -29,10 +28,11 @@ class HhruSpider(scrapy.Spider):
             'div.vacancy-title span[itemprop="baseSalary"] meta[itemprop="maxValue"]::attr(content)').extract_first()
         currency = response.css(
             'div.vacancy-title span[itemprop="baseSalary"] meta[itemprop="currency"]::attr(content)').extract_first()
+        salary = {'salary_from': salary_from, 'salary_to': salary_to, 'currency':currency}
         yield JobparserItem(
             domain=self.allowed_domains[0],
             vacancy_link=vacancy_link,
             vacancy_text=vacancy_text,
-            salary_from=salary_from,
-            salary_to=salary_to,
-            currency=currency)
+            salary=salary
+
+        )
